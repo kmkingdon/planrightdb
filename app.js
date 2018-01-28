@@ -31,7 +31,7 @@ app.get("/assignments", (request, response) => {
     }).catch(console.error);
 });
 
-app.get("/students/:id", (request, response) => {
+app.get("/assignments/:id", (request, response) => {
     queries.read(request.params.id).then(student => {
         student
             ? response.json({student})

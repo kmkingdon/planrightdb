@@ -14,7 +14,7 @@ module.exports = {
       return database("assignments").select();
     },
     read(id){
-      return database("students").select().where("id", id).first();
+      return database("assignments").select().where("id", id).first();
     },
     create1(goal){
       return database("goals")
