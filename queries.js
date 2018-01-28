@@ -36,7 +36,7 @@ module.exports = {
             .then(record => record[0]);
     },
     update2(id, assignment){
-      return database("assignment")
+      return database("assignments")
             .update(assignment)
             .where("id", id)
             .returning("*")
