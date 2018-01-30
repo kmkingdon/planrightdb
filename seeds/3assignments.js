@@ -3,6 +3,7 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       return knex('assignments').insert([
         {id: 1,
+          number: 1,
           name: 'Scientific Method',
           type: 'Classwork',
           dueDate: '2018-01-25',
@@ -11,6 +12,7 @@ exports.seed = function(knex, Promise) {
           students_id: 1
         },
         {id: 2,
+          number: 2,
           name: 'Scientific Method HW',
           type: 'Homework',
           dueDate: '2018-01-26',
@@ -19,6 +21,7 @@ exports.seed = function(knex, Promise) {
           students_id: 1
         },
         {id: 3,
+          number: 3,
           name: 'Scientific Method Project',
           type: 'Projects',
           dueDate: '2018-01-27',
@@ -27,6 +30,7 @@ exports.seed = function(knex, Promise) {
           students_id: 1
         },
         {id: 4,
+          number: 4,
           name: 'Tools of Scientist',
           type: 'Classwork',
           dueDate: '2018-01-28',
@@ -35,6 +39,7 @@ exports.seed = function(knex, Promise) {
           students_id: 1
         },
         {id: 5,
+          number: 5,
           name: 'Tools of Scientist HW',
           type: 'Homework',
           dueDate: '2018-01-29',
@@ -43,6 +48,7 @@ exports.seed = function(knex, Promise) {
           students_id: 1
         },
         {id: 6,
+          number: 6,
           name: 'Scientific Method Quiz 1',
           type: 'Assessments',
           dueDate: '2018-01-30',
@@ -51,6 +57,7 @@ exports.seed = function(knex, Promise) {
           students_id: 1
         },
         {id: 7,
+          number: 7,
           name: 'Scientific Method Quiz 2',
           type: 'Assessments',
           dueDate: '2018-02-01',

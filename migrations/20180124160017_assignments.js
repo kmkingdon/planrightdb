@@ -1,6 +1,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('assignments', table => {
     table.increments('id').primary();
+    table.integer('number');
     table.text('name');
     table.text('type');
     table.date('dueDate');
