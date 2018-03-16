@@ -3,7 +3,7 @@ require("dotenv").config()
 module.exports = {
   development: {
     client: "pg",
-    connection: "postgres://localhost/goaltrackerdb"
+    connection: "postgres://localhost/planrightdb"
   },
   production: {
     client: "pg",

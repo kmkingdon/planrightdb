@@ -7,70 +7,178 @@ const cors = require('cors');
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/teachers", (request, response) => {
-    queries.list1().then(teachers => {
-        response.json({teachers});
+app.get("/users", (request, response) => {
+    queries.list('users').then(users => {
+        response.json({users});
     }).catch(console.error);
 });
 
-app.get("/students", (request, response) => {
-    queries.list2().then(students => {
-        response.json({students});
+app.get("/lessontemplates", (request, response) => {
+    queries.list('lessonTemplates').then(templates => {
+        response.json({templates});
+    }).catch(console.error);
+});
+
+app.get("/lessonplans", (request, response) => {
+    queries.list('lessonPlans').then(plans => {
+        response.json({plans});
     }).catch(console.error);
 });
 
 app.get("/goals", (request, response) => {
-    queries.list3().then(goals => {
+    queries.list('goals').then(goals => {
         response.json({goals});
     }).catch(console.error);
 });
 
-app.get("/assignments", (request, response) => {
-    queries.list4().then(assignments => {
-        response.json({assignments});
+app.get("/coach", (request, response) => {
+    queries.list('coach').then(coach => {
+        response.json({coach});
     }).catch(console.error);
 });
 
-app.get("/assignments/:id", (request, response) => {
-    queries.read(request.params.id).then(student => {
-        student
-            ? response.json({student})
+app.get("/coachtemplates", (request, response) => {
+    queries.list('coachTemplates').then(coachTemplates => {
+        response.json({coachTemplates});
+    }).catch(console.error);
+});
+
+app.get("/reflections", (request, response) => {
+    queries.list('reflections').then(reflections => {
+        response.json({reflections});
+    }).catch(console.error);
+});
+
+app.get("/lessonplans", (request, response) => {
+    queries.read('lessonplans', request.params.id).then(plans => {
+        plans
+            ? response.json({plans})
             : response.sendStatus(404)
     }).catch(console.error);
 });
 
+app.post("/users", (request, response) => {
+    queries.create('users', request.body).then(users => {
+        response.json({users});
+    }).catch(console.error);
+});
+
+app.post("/lessontemplates", (request, response) => {
+    queries.create('lessonTemplates', request.body).then(templates => {
+        response.json({templates});
+    }).catch(console.error);
+});
+
+app.post("/lessonplans", (request, response) => {
+    queries.create('lessonPlans', request.body).then(plans => {
+        response.json({plans});
+    }).catch(console.error);
+});
+
 app.post("/goals", (request, response) => {
-    queries.create1(request.body).then(goals => {
-        response.status(201).json({goals});
-    }).catch(console.error);
-});
-
-app.post("/assignments", (request, response) => {
-    queries.create2(request.body).then(assignments => {
-        response.status(201).json({assignments});
-    }).catch(console.error);
-});
-
-app.put("/goals/:id", (request, response) => {
-    queries.update1(request.params.id, request.body).then(goals => {
+    queries.create('goals', request.body).then(goals => {
         response.json({goals});
     }).catch(console.error);
 });
 
-app.put("/assignments/:id", (request, response) => {
-    queries.update2(request.params.id, request.body).then(assignments => {
-        response.json({assignments});
+app.post("/coach", (request, response) => {
+    queries.create('coach', request.body).then(coach => {
+        response.json({coach});
     }).catch(console.error);
 });
 
-app.delete("/goals/:id", (request, response) => {
-    queries.delete1(request.params.id).then(() => {
+app.post("/coachtemplates", (request, response) => {
+    queries.create('coachTemplates', request.body).then(coachTemplates => {
+        response.json({coachTemplates});
+    }).catch(console.error);
+});
+
+app.post("/reflections", (request, response) => {
+    queries.create('reflections', request.body).then(reflections => {
+        response.json({reflections});
+    }).catch(console.error);
+});
+
+app.put("/users/:id", (request, response) => {
+    queries.update('users', request.params.id, request.body).then(users => {
+        response.json({users});
+    }).catch(console.error);
+});
+
+app.put("/lessontemplates/:id", (request, response) => {
+    queries.update('lessonTemplates', request.params.id, request.body).then(templates => {
+        response.json({templates});
+    }).catch(console.error);
+});
+
+app.put("/lessonplans/:id", (request, response) => {
+    queries.update('lessonPlans', request.params.id, request.body).then(plans => {
+        response.json({plans});
+    }).catch(console.error);
+});
+
+app.put("/goals/:id", (request, response) => {
+    queries.update('goals', request.params.id, request.body).then(goals => {
+        response.json({goals});
+    }).catch(console.error);
+});
+
+app.put("/coach/:id", (request, response) => {
+    queries.update('coach', request.params.id, request.body).then(coach => {
+        response.json({coach});
+    }).catch(console.error);
+});
+
+app.put("/coachtemplates/:id", (request, response) => {
+    queries.update('coachTemplates', request.params.id, request.body).then(coachTemplates => {
+        response.json({coachTemplates});
+    }).catch(console.error);
+});
+
+app.put("/reflections/:id", (request, response) => {
+    queries.update('reflections', request.params.id, request.body).then(reflections => {
+        response.json({reflections});
+    }).catch(console.error);
+});
+
+app.delete("/users/:id", (request, response) => {
+    queries.delete('users', request.params.id).then(() => {
         response.sendStatus(204);
     }).catch(console.error);
 });
 
-app.delete("/assignments/:id", (request, response) => {
-    queries.delete2(request.params.id).then(() => {
+app.delete("/lessontemplates/:id", (request, response) => {
+    queries.delete('lessonTemplates', request.params.id).then(() => {
+        response.sendStatus(204);
+    }).catch(console.error);
+});
+
+app.delete("/lessonplans/:id", (request, response) => {
+    queries.delete('lessonPlans', request.params.id).then(() => {
+        response.sendStatus(204);
+    }).catch(console.error);
+});
+
+app.delete("/goals/:id", (request, response) => {
+    queries.delete('goals', request.params.id).then(() => {
+        response.sendStatus(204);
+    }).catch(console.error);
+});
+
+app.delete("/coach/:id", (request, response) => {
+    queries.delete('coach', request.params.id).then(() => {
+        response.sendStatus(204);
+    }).catch(console.error);
+});
+
+app.delete("/coachtemplates/:id", (request, response) => {
+    queries.delete('coachTemplates', request.params.id).then(() => {
+        response.sendStatus(204);
+    }).catch(console.error);
+});
+
+app.delete("/reflections/:id", (request, response) => {
+    queries.delete('reflections', request.params.id).then(() => {
         response.sendStatus(204);
     }).catch(console.error);
 });
