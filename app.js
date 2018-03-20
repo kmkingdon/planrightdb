@@ -13,6 +13,12 @@ app.get("/users", (request, response) => {
     }).catch(console.error);
 });
 
+app.get("/components", (request, response) => {
+    queries.list('components').then(users => {
+        response.json({users});
+    }).catch(console.error);
+});
+
 app.get("/lessontemplates", (request, response) => {
     queries.list('lessonTemplates').then(templates => {
         response.json({templates});
