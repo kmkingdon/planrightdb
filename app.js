@@ -20,13 +20,13 @@ app.get("/components", (request, response) => {
 });
 
 app.get("/lessontemplates", (request, response) => {
-    queries.list('lessonTemplates').then(templates => {
+    queries.list('lesson_templates').then(templates => {
         response.json({templates});
     }).catch(console.error);
 });
 
 app.get("/lessonplans", (request, response) => {
-    queries.list('lessonPlans').then(plans => {
+    queries.list('lesson_plans').then(plans => {
         response.json({plans});
     }).catch(console.error);
 });
@@ -44,7 +44,7 @@ app.get("/coach", (request, response) => {
 });
 
 app.get("/coachtemplates", (request, response) => {
-    queries.list('coachTemplates').then(coachTemplates => {
+    queries.list('coach_templates').then(coachTemplates => {
         response.json({coachTemplates});
     }).catch(console.error);
 });
@@ -70,13 +70,13 @@ app.post("/users", (request, response) => {
 });
 
 app.post("/lessontemplates", (request, response) => {
-    queries.create('lessonTemplates', request.body).then(templates => {
+    queries.create('lesson_templates', request.body).then(templates => {
         response.json({templates});
     }).catch(console.error);
 });
 
 app.post("/lessonplans", (request, response) => {
-    queries.create('lessonPlans', request.body).then(plans => {
+    queries.create('lesson_plans', request.body).then(plans => {
         response.json({plans});
     }).catch(console.error);
 });
@@ -94,7 +94,7 @@ app.post("/coach", (request, response) => {
 });
 
 app.post("/coachtemplates", (request, response) => {
-    queries.create('coachTemplates', request.body).then(coachTemplates => {
+    queries.create('coach_templates', request.body).then(coachTemplates => {
         response.json({coachTemplates});
     }).catch(console.error);
 });
@@ -112,13 +112,13 @@ app.put("/users/:id", (request, response) => {
 });
 
 app.put("/lessontemplates/:id", (request, response) => {
-    queries.update('lessonTemplates', request.params.id, request.body).then(templates => {
+    queries.update('lesson_templates', request.params.id, request.body).then(templates => {
         response.json({templates});
     }).catch(console.error);
 });
 
 app.put("/lessonplans/:id", (request, response) => {
-    queries.update('lessonPlans', request.params.id, request.body).then(plans => {
+    queries.update('lesson_plans', request.params.id, request.body).then(plans => {
         response.json({plans});
     }).catch(console.error);
 });
@@ -136,7 +136,7 @@ app.put("/coach/:id", (request, response) => {
 });
 
 app.put("/coachtemplates/:id", (request, response) => {
-    queries.update('coachTemplates', request.params.id, request.body).then(coachTemplates => {
+    queries.update('coach_templates', request.params.id, request.body).then(coachTemplates => {
         response.json({coachTemplates});
     }).catch(console.error);
 });
@@ -154,13 +154,13 @@ app.delete("/users/:id", (request, response) => {
 });
 
 app.delete("/lessontemplates/:id", (request, response) => {
-    queries.delete('lessonTemplates', request.params.id).then(() => {
+    queries.delete('lesson_templates', request.params.id).then(() => {
         response.sendStatus(204);
     }).catch(console.error);
 });
 
 app.delete("/lessonplans/:id", (request, response) => {
-    queries.delete('lessonPlans', request.params.id).then(() => {
+    queries.delete('lesson_plans', request.params.id).then(() => {
         response.sendStatus(204);
     }).catch(console.error);
 });
@@ -178,7 +178,7 @@ app.delete("/coach/:id", (request, response) => {
 });
 
 app.delete("/coachtemplates/:id", (request, response) => {
-    queries.delete('coachTemplates', request.params.id).then(() => {
+    queries.delete('coach_templates', request.params.id).then(() => {
         response.sendStatus(204);
     }).catch(console.error);
 });

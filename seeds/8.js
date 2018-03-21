@@ -7,6 +7,7 @@ exports.seed = function(knex, Promise) {
           name: 'Standards',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -14,6 +15,7 @@ exports.seed = function(knex, Promise) {
           name: 'Date',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -21,6 +23,7 @@ exports.seed = function(knex, Promise) {
           name: 'Subject',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -28,6 +31,7 @@ exports.seed = function(knex, Promise) {
           name: 'Teacher',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -35,6 +39,7 @@ exports.seed = function(knex, Promise) {
           name: 'Class Period',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -42,6 +47,7 @@ exports.seed = function(knex, Promise) {
           name: 'Objective',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -49,6 +55,7 @@ exports.seed = function(knex, Promise) {
           name: 'Essential Question',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -56,6 +63,7 @@ exports.seed = function(knex, Promise) {
           name: 'Hook',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -63,6 +71,7 @@ exports.seed = function(knex, Promise) {
           name: 'Do Now',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -70,6 +79,7 @@ exports.seed = function(knex, Promise) {
           name: 'I Do (Introduction)',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -77,6 +87,7 @@ exports.seed = function(knex, Promise) {
           name: 'We Do (Guided Practice)',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -84,6 +95,7 @@ exports.seed = function(knex, Promise) {
           name: 'You Do (Independent Practice)',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -91,6 +103,7 @@ exports.seed = function(knex, Promise) {
           name: 'Agenda',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -98,6 +111,7 @@ exports.seed = function(knex, Promise) {
           name: 'Assessment',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -105,6 +119,7 @@ exports.seed = function(knex, Promise) {
           name: 'Accommodations',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -112,6 +127,7 @@ exports.seed = function(knex, Promise) {
           name: 'Gifted/Talented',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -119,6 +135,7 @@ exports.seed = function(knex, Promise) {
           name: 'Early Finishers',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -126,6 +143,7 @@ exports.seed = function(knex, Promise) {
           name: 'HOT Questions',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -133,6 +151,7 @@ exports.seed = function(knex, Promise) {
           name: 'Homework',
           order: 0,
           fixed: false,
+          customization: "",
 
         },
         {
@@ -140,6 +159,7 @@ exports.seed = function(knex, Promise) {
           name: 'Vocabulary',
           order: 0,
           fixed: false,
+          customization: "",
 
         }
       ]);
