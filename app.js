@@ -14,8 +14,8 @@ app.get("/users", (request, response) => {
 });
 
 app.get("/components", (request, response) => {
-    queries.list('components').then(users => {
-        response.json({users});
+    queries.list('components').then(components => {
+        response.json({components});
     }).catch(console.error);
 });
 
@@ -102,6 +102,12 @@ app.post("/coachtemplates", (request, response) => {
 app.post("/reflections", (request, response) => {
     queries.create('reflections', request.body).then(reflections => {
         response.json({reflections});
+    }).catch(console.error);
+});
+
+app.post("/components", (request, response) => {
+    queries.create('components', request.body).then(components => {
+        response.json({components});
     }).catch(console.error);
 });
 

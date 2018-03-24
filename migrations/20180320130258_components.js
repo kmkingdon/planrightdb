@@ -4,7 +4,7 @@ exports.up = function(knex, Promise) {
     table.text('name');
     table.integer('order');
     table.boolean('fixed');
-    table.text('customization');
+    table.integer('users_id').references('users.id').onDelete("CASCADE")
   })
 };
 

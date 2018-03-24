@@ -5,8 +5,8 @@ exports.seed = function(knex, Promise) {
         { id: 1,
           componentId: 2,
           name: "Sample Goal 1",
-          goalDataString: 'Sample Lesson String',
-          goalReflectionString: '',
+          goalData: {strengths:'sample', improve:'sample', actions:'sample'},
+          goalFinalReflection: 'Sample',
           coachCommentString: '',
           users_id: 1
         }

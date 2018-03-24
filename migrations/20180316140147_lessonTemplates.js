@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary();
     table.text('name');
     table.text('standards');
-    table.text('lessonTemplateString');
+    table.string('lessonTemplateString', 2000);
     table.integer('users_id').references('users.id').onDelete("CASCADE")
   })
 };

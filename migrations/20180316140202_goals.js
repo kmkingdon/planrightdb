@@ -3,8 +3,8 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary();
     table.integer('componentId');
     table.text('name');
-    table.text('goalDataString');
-    table.text('goalReflectionString');
+    table.json('goalData');
+    table.text('goalFinalReflection');
     table.text('coachCommentString');
     table.integer('users_id').references('users.id').onDelete("CASCADE")
   })

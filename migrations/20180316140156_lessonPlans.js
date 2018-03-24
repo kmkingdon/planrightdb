@@ -3,9 +3,10 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary();
     table.text('name');
     table.date('dateTaught');
-    table.text('lessonDataString');
+    table.string('lessonTemplateString', 2000);
+    table.json('lessonPlanData');
     table.text('fileName');
-    table.text('teacherReflectionString');
+    table.json('teacherReflection');
     table.text('coachCommentString');
     table.integer('users_id').references('users.id').onDelete("CASCADE")
   })
