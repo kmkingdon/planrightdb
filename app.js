@@ -16,7 +16,6 @@ app.post('/login', (req, res) => {
     let password = req.body.password;
 
     queries.login(email).then(user => {
-
       if(user === undefined) {
         res.json({error: 'Email not found. Please sign up or enter a new email'})
       } else {
