@@ -15,10 +15,11 @@ app.post('/login', (req, res) => {
     let password = req.body.password;
 
     queries.login(email).then(user => {
+      let userNew = JSON.parse(JSON.stringify(user));
       if(user === undefined) {
         res.json({error: 'Email not found. Please sign up or enter a new email'})
       } else {
-        let hashedPassword = user.password;
+        let hashedPassword = userNew.password;
         let match = bcrypt.compareSync(password , hashedPassword);
 
         if(match){
@@ -27,7 +28,7 @@ app.post('/login', (req, res) => {
 
           let token= jwt.sign(Object.assign({},payload), process.env.TOKEN_SECRET)
 
-          res.json({token:token, id:user.id})
+          res.json({token:token, id:userNew.id})
 
         } else {
           res.json({error: 'Password does not match the email entered.'})
