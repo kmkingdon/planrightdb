@@ -1,6 +1,13 @@
 const database = require("./database-connection");
 
 module.exports = {
+    login(username){
+      return database('users').where("email", email).first();
+    },
+    deserialize(id){
+      console.log(id)
+      return database('users').where("id", id).first();
+    },
     list(db){
       return database(db).select();
     },

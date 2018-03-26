@@ -3,9 +3,38 @@ const app = express();
 const queries = require("./queries");
 const bodyParser = require("body-parser");
 const cors = require('cors');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 app.use(bodyParser.json());
 app.use(cors());
+
+
+app.post('/login', (req, res) => {
+    let email = req.body.email;
+    let password = req.body.password;
+
+    queries.login(email).then(user => {
+      if(user === undefined) {
+        res.json({error: 'Email not found. Please sign up or enter a new email'})
+      } else {
+        let hashedPassword = user.password;
+        let match = bcrypt.compareSync(password , hashedPassword);
+
+        if(match){
+          let payload = user;
+          delete payload.password;
+
+          let token= jwt.sign(Object.assign({},payload), process.env.TOKEN_SECRET)
+
+          res.json({token:token, id:user.id})
+
+        } else {
+          res.json({error: 'Password does not match the email entered.'})
+        }
+      }
+    })
+});
 
 app.get("/users", (request, response) => {
     queries.list('users').then(users => {
@@ -14,9 +43,20 @@ app.get("/users", (request, response) => {
 });
 
 app.get("/components", (request, response) => {
-    queries.list('components').then(components => {
-        response.json({components});
-    }).catch(console.error);
+  if(request.headers.authorization) {
+
+    let token = request.headers.authorization.substring(7);
+    let decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
+    let email = decodedToken.email
+
+    queries.login(email).then(user => {
+      if(email === user.email) {
+        queries.list('components').then(components => {
+            response.json({components});
+        }).catch(console.error);
+      }
+    })
+  }
 });
 
 app.get("/lessontemplates", (request, response) => {

@@ -10,12 +10,20 @@
   "author": "Kevin Kingdon",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "jsonwebtoken": "^8.2.0",
     "knex": "^0.14.2",
-    "pg": "^7.4.1"
+    "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pg": "^7.4.1",
+    "session-file-store": "^1.2.0"
   },
   "devDependencies": {
     "nodemon": "^1.14.11"

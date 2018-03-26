@@ -3,6 +3,8 @@ exports.up = function(knex, Promise) {
     table.increments('id').primary();
     table.text('name');
     table.date('dateTaught');
+    table.json('standards');
+    table.json('standardsObject');
     table.string('lessonTemplateString', 2000);
     table.json('lessonPlanData');
     table.text('fileName');
