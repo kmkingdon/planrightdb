@@ -23,7 +23,7 @@ app.post('/login', (req, res) => {
         let match = bcrypt.compareSync(password , hashedPassword);
 
         if(match){
-          let payload = user;
+          let payload = userNew;
           delete payload.password;
 
           let token= jwt.sign(Object.assign({},payload), process.env.TOKEN_SECRET)
