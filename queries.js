@@ -1,7 +1,7 @@
 const database = require("./database-connection");
 
 module.exports = {
-    login(username){
+    login(email){
       return database('users').where("email", email).first();
     },
     deserialize(id){
