@@ -1,14 +1,13 @@
 exports.seed = function(knex, Promise) {
-  return knex('coach').del()
+  return knex('user_preferences').del()
     .then(function () {
-      return knex('coach').insert([
+      return knex('user_preferences').insert([
         { id: 1,
-          code: 'abcd',
-          teacherIdsString: "1,2,3",
-          users_id: 4
+          avatar: 'avatar1.png',
+          users_id: 1
         }
       ]);
     }).then(() => {
-      return knex.raw("ALTER SEQUENCE coach_id_seq RESTART WITH 2;")
+      return knex.raw("ALTER SEQUENCE user_preferences_id_seq RESTART WITH 2;")
     });
 };
