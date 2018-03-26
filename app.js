@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const knex = require('./database-connection.js')
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -14,7 +15,9 @@ app.post('/login', (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
 
-    queries.login(email).then(user => {
+    knex("users")
+        .where('email', email)
+        .then(user => {
       if(user === undefined) {
         res.json({error: 'Email not found. Please sign up or enter a new email'})
       } else {
