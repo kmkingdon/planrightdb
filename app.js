@@ -15,9 +15,8 @@ app.post('/login', (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
 
-    knex("users")
-        .where('email', email)
-        .then(user => {
+    queries.login(email).then(user => {
+
       if(user === undefined) {
         res.json({error: 'Email not found. Please sign up or enter a new email'})
       } else {
@@ -25,6 +24,7 @@ app.post('/login', (req, res) => {
         let match = bcrypt.compareSync(password , hashedPassword);
 
         if(match){
+          console.log(user)
           let payload = user;
           delete payload.password;
 

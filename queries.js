@@ -2,7 +2,7 @@ const database = require("./database-connection");
 
 module.exports = {
     login(email){
-      return database('users').where("email", email).first();
+      return database('users').where("email", email).first().then(user => JSON.parse(JSON.stringify(user)));
     },
     list(db){
       return database(db).select();
