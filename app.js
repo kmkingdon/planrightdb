@@ -14,6 +14,7 @@ app.use(cors());
 app.post('/login', (req, res) => {
     let email = req.body.email;
     let password = req.body.password;
+    console.log(req.body);
 
     queries.login(email).then(user => {
       if(user === undefined) {
@@ -49,9 +50,7 @@ app.post('/signup', function(req, res, next) {
         let hash= bcrypt.hashSync(password, saltRounds);
         req.body.password = hash;
 
-        knex('users')
-          .insert(req.body)
-          .then(res.json({confirmation: 'Account has been created'}))
+        queries.signup(req.body).then(res.json({confirmation: 'Account has been created'}))
       } else {
         res.json({error: 'Email already taken. Please enter a unique email'})
       }
@@ -357,22 +356,6 @@ app.post("/user_preferences", (request, response) => {
   }
 });
 
-app.put("/users/:id", (request, response) => {
-  if(request.headers.authorization) {
-
-    let token = request.headers.authorization.substring(7);
-    let decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
-    let email = decodedToken.email
-
-    queries.login(email).then(user => {
-      if(email === user.email) {
-        queries.update('users', request.params.id, request.body).then(users => {
-            response.json({users});
-        }).catch(console.error);
-      }
-    })
-  }
-});
 
 app.put("/lessontemplates/:id", (request, response) => {
   if(request.headers.authorization) {

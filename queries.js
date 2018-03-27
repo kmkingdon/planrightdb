@@ -4,6 +4,9 @@ module.exports = {
     login(email){
       return database('users').where("email", email).first();
     },
+    signup(body){
+      return database('users').insert(body).returning('*').then(record => record[0]);
+    },
     list(db){
       return database(db).select();
     },
