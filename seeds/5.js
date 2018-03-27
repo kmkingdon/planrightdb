@@ -5,9 +5,21 @@ exports.seed = function(knex, Promise) {
         { id: 1,
           avatar: '../../static/0.png',
           users_id: 1
-        }
+        },
+        { id: 2,
+          avatar: '../../static/0.png',
+          users_id: 2
+        },
+        { id: 3,
+          avatar: '../../static/0.png',
+          users_id: 3
+        },
+        { id: 4,
+          avatar: '../../static/0.png',
+          users_id: 4
+        },
       ]);
     }).then(() => {
-      return knex.raw("ALTER SEQUENCE user_preferences_id_seq RESTART WITH 2;")
+      return knex.raw("ALTER SEQUENCE user_preferences_id_seq RESTART WITH 5;")
     });
 };

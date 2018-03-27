@@ -7,6 +7,9 @@ module.exports = {
     signup(body){
       return database('users').insert(body).returning('*').then(record => record[0]);
     },
+    preferences(body){
+      return database('user_preferences').insert(body).returning('*').then(record => record[0]);
+    },
     list(db){
       return database(db).select();
     },

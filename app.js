@@ -43,6 +43,10 @@ app.post('/signup', function(req, res, next) {
   let email= req.body.email;
   let password= req.body.password;
   let username= req.body.username;
+  let userPreferencesObject = {
+    avatar: '../../static/0.png',
+    users_id: 1,
+  }
 
   queries.login(email).then(user => {
       if(user === undefined) {
@@ -50,17 +54,21 @@ app.post('/signup', function(req, res, next) {
         let hash= bcrypt.hashSync(password, saltRounds);
         req.body.password = hash;
 
-        queries.signup(req.body).then(res.json({confirmation: 'Account has been created'}))
+        queries.signup(req.body)
+          .then(res.json({confirmation: 'Account has been created'}))
+          .then(user => queries.preferences({
+            avatar: '../../static/0.png',
+            users_id: user.id,
+          }));
+
       } else {
         res.json({error: 'Email already taken. Please enter a unique email'})
       }
     })
-});
 
-app.get("/users", (request, response) => {
-  queries.list('users').then(components => {
-      response.json({components});
-  }).catch(console.error);
+
+
+
 });
 
 app.get("/components", (request, response) => {
@@ -356,6 +364,22 @@ app.post("/user_preferences", (request, response) => {
   }
 });
 
+app.put("/user_preferences", (request, response) => {
+  if(request.headers.authorization) {
+
+    let token = request.headers.authorization.substring(7);
+    let decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
+    let email = decodedToken.email
+
+    queries.login(email).then(user => {
+      if(email === user.email) {
+        queries.update('user_preferences', request.params.id, request.body).then(preferences => {
+            response.json({preferences});
+        }).catch(console.error);
+      }
+    })
+  }
+});
 
 app.put("/lessontemplates/:id", (request, response) => {
   if(request.headers.authorization) {
