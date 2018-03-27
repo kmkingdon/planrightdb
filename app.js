@@ -177,6 +177,23 @@ app.get("/reflections", (request, response) => {
   }
 });
 
+app.get("/user_preferences", (request, response) => {
+  if(request.headers.authorization) {
+
+    let token = request.headers.authorization.substring(7);
+    let decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
+    let email = decodedToken.email
+
+    queries.login(email).then(user => {
+      if(email === user.email) {
+        queries.list('user_preferences').then(preferences => {
+            response.json({preferences});
+        }).catch(console.error);
+      }
+    })
+  }
+});
+
 app.get("/lessonplans", (request, response) => {
   if(request.headers.authorization) {
 
@@ -196,22 +213,7 @@ app.get("/lessonplans", (request, response) => {
   }
 });
 
-app.post("/users", (request, response) => {
-  if(request.headers.authorization) {
 
-    let token = request.headers.authorization.substring(7);
-    let decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
-    let email = decodedToken.email
-
-    queries.login(email).then(user => {
-      if(email === user.email) {
-        queries.create('users', request.body).then(users => {
-            response.json({users});
-        }).catch(console.error);
-      }
-    })
-  }
-});
 
 app.post("/lessontemplates", (request, response) => {
   if(request.headers.authorization) {
@@ -332,6 +334,23 @@ app.post("/components", (request, response) => {
   }
 });
 
+app.post("/user_preferences", (request, response) => {
+  if(request.headers.authorization) {
+
+    let token = request.headers.authorization.substring(7);
+    let decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
+    let email = decodedToken.email
+
+    queries.login(email).then(user => {
+      if(email === user.email) {
+        queries.create('user_preferences', request.body).then(components => {
+            response.json({components});
+        }).catch(console.error);
+      }
+    })
+  }
+});
+
 app.put("/users/:id", (request, response) => {
   if(request.headers.authorization) {
 
@@ -445,6 +464,23 @@ app.put("/reflections/:id", (request, response) => {
       if(email === user.email) {
         queries.update('reflections', request.params.id, request.body).then(reflections => {
             response.json({reflections});
+        }).catch(console.error);
+      }
+    })
+  }
+});
+
+app.put("/users/:id", (request, response) => {
+  if(request.headers.authorization) {
+
+    let token = request.headers.authorization.substring(7);
+    let decodedToken = jwt.verify(token, process.env.TOKEN_SECRET);
+    let email = decodedToken.email
+
+    queries.login(email).then(user => {
+      if(email === user.email) {
+        queries.update('users', request.params.id, request.body).then(users => {
+            response.json({users});
         }).catch(console.error);
       }
     })
