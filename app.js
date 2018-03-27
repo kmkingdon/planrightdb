@@ -58,6 +58,12 @@ app.post('/signup', function(req, res, next) {
     })
 });
 
+app.get("/users", (request, response) => {
+  queries.list('users').then(components => {
+      response.json({components});
+  }).catch(console.error);
+});
+
 app.get("/components", (request, response) => {
   if(request.headers.authorization) {
 

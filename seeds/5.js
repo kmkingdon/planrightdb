@@ -3,7 +3,7 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       return knex('user_preferences').insert([
         { id: 1,
-          avatar: 'avatar1.png',
+          avatar: '../../static/0.png',
           users_id: 1
         }
       ]);
