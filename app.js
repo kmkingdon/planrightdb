@@ -364,7 +364,7 @@ app.post("/user_preferences", (request, response) => {
   }
 });
 
-app.put("/user_preferences", (request, response) => {
+app.put("/user_preferences/:id", (request, response) => {
   if(request.headers.authorization) {
 
     let token = request.headers.authorization.substring(7);
